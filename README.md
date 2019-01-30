@@ -24,7 +24,7 @@ view.backgroundColor = [UIColor whiteColor];
 
 ## Author
 
-yotrolz, 207213149@qq.com
+YotrolZ, 207213149@qq.com
 
 ## License
 

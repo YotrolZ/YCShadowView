@@ -23,7 +23,7 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		719C661D34160F298D02BA7F /* Pods_YCShadowView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D460331D0527DCDED1232A /* Pods_YCShadowView_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		AE72DD1A2201A7FC00282AB1 /* example@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE72DD192201A7FC00282AB1 /* example@2x.png */; };
+		AE72DD1C2201ABEF00282AB1 /* example@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE72DD1B2201ABEF00282AB1 /* example@2x.png */; };
 		E70496F3623902104DB491F3 /* Pods_YCShadowView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF68E1B369CF9CB15EFDD33 /* Pods_YCShadowView_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +66,7 @@
 		79891FF0E94CEABA35B1CB9F /* Pods-YCShadowView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCShadowView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCShadowView_Tests/Pods-YCShadowView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7A734E6F6E29DCFED585D0C4 /* Pods-YCShadowView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCShadowView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YCShadowView_Tests/Pods-YCShadowView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AE72DD192201A7FC00282AB1 /* example@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "example@2x.png"; sourceTree = "<group>"; };
+		AE72DD1B2201ABEF00282AB1 /* example@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "example@2x.png"; sourceTree = "<group>"; };
 		C64772D9F2889AFB93866DF4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CC4E10996456B1BE348558D6 /* Pods-YCShadowView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCShadowView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCShadowView_Example/Pods-YCShadowView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,7 +140,7 @@
 				6003F5A5195388D20070C39A /* YCViewController.h */,
 				6003F5A6195388D20070C39A /* YCViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
-				AE72DD192201A7FC00282AB1 /* example@2x.png */,
+				AE72DD1B2201ABEF00282AB1 /* example@2x.png */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -282,7 +282,7 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				AE72DD1A2201A7FC00282AB1 /* example@2x.png in Resources */,
+				AE72DD1C2201ABEF00282AB1 /* example@2x.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
