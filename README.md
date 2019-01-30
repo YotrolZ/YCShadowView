@@ -1,28 +1,30 @@
 # YCShadowView
 
-[![CI Status](https://img.shields.io/travis/yotrolz/YCShadowView.svg?style=flat)](https://travis-ci.org/yotrolz/YCShadowView)
-[![Version](https://img.shields.io/cocoapods/v/YCShadowView.svg?style=flat)](https://cocoapods.org/pods/YCShadowView)
-[![License](https://img.shields.io/cocoapods/l/YCShadowView.svg?style=flat)](https://cocoapods.org/pods/YCShadowView)
-[![Platform](https://img.shields.io/cocoapods/p/YCShadowView.svg?style=flat)](https://cocoapods.org/pods/YCShadowView)
+![](https://github.com/YotrolZ/YCShadowView/blob/master/Example/YCShadowView/example%402x.png)
 
 ## Example
+- To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+## How to use YCShadowView
 
-## Requirements
+- Installation with CocoaPods：
+    - `pod 'YCShadowView'`
+    -  `#import <YCShadowView/YCShadowView.h>` 
+- Manual import：
+    - Drag the YCShadowView folder to project
+    - `#import "YCShadowView.h"`
 
-## Installation
-
-YCShadowView is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'YCShadowView'
+- Use
+```Objc
+YCShadowView *view = [[YCShadowView alloc] initWithFrame:CGRectMake(200, 250, 100, 100)];
+view.backgroundColor = [UIColor whiteColor];
+[view yc_shaodwRadius:10 shadowColor:[UIColor colorWithWhite:0 alpha:0.5] shadowOffset:CGSizeMake(0, 0) byShadowSide:(YCShadowSideRight)];
+[view yc_cornerRadius:10 byRoundingCorners:(UIRectCornerBottomLeft)];
 ```
 
 ## Author
 
-yotrolz, 674317983@qq.com
+yotrolz, 207213149@qq.com
 
 ## License
 
