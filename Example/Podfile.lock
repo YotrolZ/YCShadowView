@@ -1,0 +1,16 @@
+PODS:
+  - YCShadowView (1.0.0)
+
+DEPENDENCIES:
+  - YCShadowView (from `../`)
+
+EXTERNAL SOURCES:
+  YCShadowView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  YCShadowView: e91252749055f88f531eb673a2695aa7f9de6b94
+
+PODFILE CHECKSUM: df1035ac644aa6fde526fe51c68cef6f5588a69d
+
+COCOAPODS: 1.5.3

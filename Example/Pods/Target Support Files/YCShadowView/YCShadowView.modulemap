@@ -1,0 +1,6 @@
+framework module YCShadowView {
+  umbrella header "YCShadowView-umbrella.h"
+
+  export *
+  module * { export * }
+}
