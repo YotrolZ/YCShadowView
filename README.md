@@ -1,6 +1,6 @@
 # YCShadowView
 
-![](https://github.com/YotrolZ/YCShadowView/blob/master/Example/YCShadowView/example%402x.png ){:height="190px" width="375px"}
+![](https://github.com/YotrolZ/YCShadowView/blob/master/Example/YCShadowView/example%402x.png )
 
 ## Example
 - To run the example project, clone the repo, and run `pod install` from the Example directory first.
