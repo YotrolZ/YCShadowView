@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'YCShadowView_Example' do
+  pod 'YCShadowView', :path => '../'
+
+  target 'YCShadowView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
