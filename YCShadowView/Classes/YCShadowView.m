@@ -10,17 +10,21 @@
 
 @interface YCShadowView()
 
-@property(nonatomic, strong) UIColor *shadowColor;
-@property(nonatomic, assign) CGSize  shadowOffset;
-@property(nonatomic, assign) CGFloat shadowRadius;
-@property(nonatomic, assign) CGFloat cornerRadius;
+@property(nonatomic, strong) UIColor        *shadowColor;
+@property(nonatomic, assign) CGSize         shadowOffset;
+@property(nonatomic, assign) CGFloat        shadowRadius;
+@property(nonatomic, assign) NSInteger      shadowSide;
 
-@property(nonatomic, strong)UIView *backContentView;
+@property(nonatomic, assign) CGFloat        cornerRadius;
+@property(nonatomic, assign) UIRectCorner   rectCorner;
 
-@property(nonatomic, strong)CALayer *topShadowLayer;
-@property(nonatomic, strong)CALayer *botShadowLayer;
-@property(nonatomic, strong)CALayer *leftShadowLayer;
-@property(nonatomic, strong)CALayer *rightShadowLayer;
+@property(nonatomic, strong)UIView          *backContentView;
+
+@property(nonatomic, strong)CALayer         *topShadowLayer;
+@property(nonatomic, strong)CALayer         *botShadowLayer;
+@property(nonatomic, strong)CALayer         *leftShadowLayer;
+@property(nonatomic, strong)CALayer         *rightShadowLayer;
+@property(nonatomic, strong)CAShapeLayer    *maskLayer;
 
 @end
 
@@ -56,6 +60,8 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.backContentView.frame = self.bounds;
+    [self _setShadowWithShadowRadius:_shadowRadius shadowColor:_shadowColor shadowOffset:_shadowOffset byShadowSide:_shadowSide];
+    [self _setCornerRadius:_cornerRadius byRoundingCorners:_rectCorner];
 }
 
 #pragma mark - setupXxx Methods 初始化的方法
@@ -68,50 +74,24 @@
     [self yc_shaodwRadius:5 shadowColor:[UIColor colorWithWhite:0 alpha:0.3] shadowOffset:CGSizeMake(0, 0) byShadowSide:YCShadowSideAllSides];
 }
 - (void)yc_verticalShaodwRadius:(CGFloat)shadowRadius shadowColor:(UIColor *)shadowColor shadowOffset:(CGSize)shadowOffset {
-    [self yc_shaodwRadius:shadowRadius shadowColor:shadowColor shadowOffset:shadowOffset byShadowSide:(YCShadowSideTop|YCShadowSideBottom)];
+    [self yc_shaodwRadius:shadowRadius shadowColor:shadowColor shadowOffset:shadowOffset byShadowSide:YCShadowSideTop|YCShadowSideBottom];
 }
-
 - (void)yc_horizontalShaodwRadius:(CGFloat)shadowRadius shadowColor:(UIColor *)shadowColor shadowOffset:(CGSize)shadowOffset {
-    [self yc_shaodwRadius:shadowRadius shadowColor:shadowColor shadowOffset:shadowOffset byShadowSide:(YCShadowSideLeft|YCShadowSideRight)];
+    [self yc_shaodwRadius:shadowRadius shadowColor:shadowColor shadowOffset:shadowOffset byShadowSide:YCShadowSideLeft|YCShadowSideRight];
 }
 - (void)yc_shaodwRadius:(CGFloat)shadowRadius shadowColor:(UIColor *)shadowColor shadowOffset:(CGSize)shadowOffset byShadowSide:(YCShadowSide)shadowSide {
-    
     _shadowRadius = shadowRadius;
     _shadowColor  = shadowColor;
     _shadowOffset = shadowOffset;
-    
-    if (shadowRadius <= 0) {
-        return;
-    }
-    
-    if (shadowSide & YCShadowSideTop) {
-        [self _setShadowWith:YCShadowSideTop];
-    }
-    
-    if (shadowSide & YCShadowSideBottom) {
-        [self _setShadowWith:YCShadowSideBottom];
-    }
-    
-    if (shadowSide & YCShadowSideLeft) {
-        [self _setShadowWith:YCShadowSideLeft];
-    }
-    
-    if (shadowSide & YCShadowSideRight) {
-        [self _setShadowWith:YCShadowSideRight];
-    }
+    _shadowSide   = shadowSide;
 }
-
 - (void)yc_cornerRadius:(CGFloat)cornerRadius {
-    [self yc_cornerRadius:cornerRadius byRoundingCorners:UIRectCornerAllCorners];
+    _cornerRadius = cornerRadius;
+    _rectCorner   = UIRectCornerAllCorners;
 }
 - (void)yc_cornerRadius:(CGFloat)cornerRadius byRoundingCorners:(UIRectCorner)corners {
     _cornerRadius = cornerRadius;
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = self.bounds;
-    maskLayer.path = maskPath.CGPath;
-    self.backContentView.layer.mask = maskLayer;
+    _rectCorner   = corners;
 }
 
 #pragma mark - Setter/Getter Methods set/get方法
@@ -121,6 +101,7 @@
         _backContentView.backgroundColor = [UIColor whiteColor];
         _backContentView.layer.masksToBounds = YES;
         _backContentView.clipsToBounds = YES;
+        [self insertSubview:_backContentView atIndex:0];
     }
     return _backContentView;
 }
@@ -149,9 +130,53 @@
     }
     return _rightShadowLayer;
 }
+- (CAShapeLayer *)maskLayer {
+    if (!_maskLayer) {
+        _maskLayer = [[CAShapeLayer alloc] init];
+    }
+    return _maskLayer;
+}
 
 #pragma mark - private method 私有方法
-- (void)_setShadowWith:(YCShadowSide)shadowSide {
+// 绘制圆角
+- (void)_setCornerRadius:(CGFloat)cornerRadius byRoundingCorners:(UIRectCorner)corners {
+    
+    if (cornerRadius <= 0) {
+        return;
+    }
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+    self.maskLayer.frame = self.bounds;
+    self.maskLayer.path = maskPath.CGPath;
+    self.backContentView.layer.mask = self.maskLayer;
+}
+
+// 绘制阴影
+- (void)_setShadowWithShadowRadius:(CGFloat)shadowRadius shadowColor:(UIColor *)shadowColor shadowOffset:(CGSize)shadowOffset byShadowSide:(YCShadowSide)shadowSide {
+
+    if (shadowRadius <= 0) {
+        return;
+    }
+    
+    if (shadowSide & YCShadowSideTop) {
+        [self _setSingleSideShadowWithShadowRadius:shadowRadius shadowColor:shadowColor shadowOffset:shadowOffset byShadowSide:YCShadowSideTop];
+    }
+    
+    if (shadowSide & YCShadowSideBottom) {
+        [self _setSingleSideShadowWithShadowRadius:shadowRadius shadowColor:shadowColor shadowOffset:shadowOffset byShadowSide:YCShadowSideBottom];
+    }
+    
+    if (shadowSide & YCShadowSideLeft) {
+        [self _setSingleSideShadowWithShadowRadius:shadowRadius shadowColor:shadowColor shadowOffset:shadowOffset byShadowSide:YCShadowSideLeft];
+    }
+    
+    if (shadowSide & YCShadowSideRight) {
+        [self _setSingleSideShadowWithShadowRadius:shadowRadius shadowColor:shadowColor shadowOffset:shadowOffset byShadowSide:YCShadowSideRight];
+    }
+}
+
+// 绘制单边阴影
+- (void)_setSingleSideShadowWithShadowRadius:(CGFloat)shadowRadius shadowColor:(UIColor *)shadowColor shadowOffset:(CGSize)shadowOffset byShadowSide:(YCShadowSide)shadowSide {
     
     CALayer *shadowLayer = nil;
     UIBezierPath *path = [UIBezierPath bezierPath];
