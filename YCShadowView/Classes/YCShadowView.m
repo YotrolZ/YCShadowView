@@ -32,6 +32,12 @@
     }
     return self;
 }
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setup];
+    }
+    return self;
+}
 #pragma mark - Life Cycle 生命周期的方法
 
 #pragma mark - override 重载父类的方法

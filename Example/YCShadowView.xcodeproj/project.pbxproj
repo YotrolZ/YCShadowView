@@ -41,7 +41,7 @@
 		0D211BA2798AAE19C93E2FBE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		383125946F9770CFD41AA3C6 /* Pods-YCShadowView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCShadowView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-YCShadowView_Example/Pods-YCShadowView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		38D460331D0527DCDED1232A /* Pods_YCShadowView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YCShadowView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3955A2DCE907B4A156E5C80E /* YCShadowView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YCShadowView.podspec; path = ../YCShadowView.podspec; sourceTree = "<group>"; };
+		3955A2DCE907B4A156E5C80E /* YCShadowView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YCShadowView.podspec; path = ../YCShadowView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5DF68E1B369CF9CB15EFDD33 /* Pods_YCShadowView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YCShadowView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* YCShadowView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YCShadowView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -260,6 +260,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

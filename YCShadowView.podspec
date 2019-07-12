@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'YCShadowView'
-  s.version          = '1.0.1'
+  s.version          = '1.2.0'
   s.summary          = 'An easy way to use shadow / cornerRadius'
 
   s.homepage         = 'https://github.com/yotrolz/YCShadowView'
